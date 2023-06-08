@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: blue-app
-        image: hoanggianguet/capstone-docker-image-blue
+        image: huandb/capstone-docker-image-blue
         ports:
         - containerPort: 80
         env:

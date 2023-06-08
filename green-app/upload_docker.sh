@@ -3,7 +3,7 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=hoanggianguet/capstone-docker-image-green
+dockerpath=huandb/capstone-docker-image-green
 
 # Step 2:
 # Authenticate & tag

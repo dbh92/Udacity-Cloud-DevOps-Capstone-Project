@@ -8,13 +8,13 @@ pipeline {
 
 	stages {
 		
-		stage("Lint HTML static files") {
+		stage("HTML Lint Check") {
 			steps {
 				sh 'tidy -q -e ./blue-app/*.html'
 				sh 'tidy -q -e ./green-app/*.html'
 			}
 		}
-		stage("Adding Script Permissions") {
+		stage("Add Permissions") {
 			steps {
 				sh 'echo " --- change file permission to executable --- "'
 				sh '''
@@ -112,7 +112,7 @@ pipeline {
 				}
 			}
 		}
-		stage("Update K8s Cluster Context") {
+		stage("Update K8s Cluster") {
 			steps {
 				withAWS(region:'us-east-1',credentials:'aws-jenkins') {
 					sh 'aws eks --region us-east-1 update-kubeconfig --name capstone-project '
@@ -121,7 +121,7 @@ pipeline {
 		}
 		stage("Deploy Application Containers") {
 			parallel {
-				stage("Deploy Blue Application Container") {
+				stage("Deploy Blue App Container") {
 					steps {
 						withAWS(region:'us-east-1',credentials:'aws-jenkins') {
 							sh '''
@@ -131,7 +131,7 @@ pipeline {
 						}
 					}
 				}
-				stage("Deploy Green Application Container") {
+				stage("Deploy Green App Container") {
 					steps {
 						withAWS(region:'us-east-1',credentials:'aws-jenkins') {
 							sh '''

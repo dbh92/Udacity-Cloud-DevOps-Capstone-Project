@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: green-app
-        image: hoanggianguet/capstone-docker-image-green
+        image: huandb/capstone-docker-image-green
         ports:
         - containerPort: 80
         env:
